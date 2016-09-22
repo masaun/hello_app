@@ -1,0 +1,15 @@
+<h2>タイトル</h2>
+<%= form_for(@post) do |f| %>
+    <%= f.text_field :title %>
+
+    <h2>著者</h2>
+    <% @post.authors.each do |author| %>
+        <%= f.fields_for :authors, author do |author_field| %>
+            <%= author_field.text_field :name %>
+        <% end %>
+    <% end %>
+    <br>
+    <div class="btn btn-primary">
+      <%= f.submit %>
+    </div>
+<% end %>
