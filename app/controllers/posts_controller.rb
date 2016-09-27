@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @authors = Author.new
+
+
     # 今回は分かりやすく、authorは固定で3枠作成
     # 1postで最大3author追加出来る
  
@@ -9,9 +11,9 @@ class PostsController < ApplicationController
     #     # 関連オブジェクトをbuild
     #     @post.authors.build
     # }
-end
+  end
  
-def create
+  def create
     @post = Post.new(post_params)
     @post.save
 
@@ -25,11 +27,12 @@ def create
     end
 
     redirect_to posts_new_path
-end
- 
-# strong parameters
-private
-  def post_params
-      params.require(:post).permit(:title, authors_attributes: [:name])
   end
+   
+  # strong parameters
+  private
+    def post_params
+        params.require(:post).permit(:title, authors_attributes: [:name])
+    end
+
 end
