@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  root :to => 'posts#new'
+
   get 'posts/new'
 
   get 'posts/create'
